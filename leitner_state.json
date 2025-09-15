@@ -1,63 +1,1282 @@
 {
-  "created": "2025-09-15T15:14:16.548747+00:00",
+  "created": "2025-09-15T16:22:16.990465+00:00",
   "cards": {
     "csv:1": {
       "id": "csv:1",
-      "q": "What are the three pillars of the CIA triad?",
-      "a": "Confidentiality"
+      "q": "What cloud deployment models are supported by Azure?",
+      "a": "Public, private, and hybrid cloud models."
     },
     "csv:2": {
       "id": "csv:2",
-      "q": "What Azure service stores secrets securely?",
-      "a": "Azure Key Vault"
+      "q": "What are the three main service models of cloud computing?",
+      "a": "Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS)."
     },
     "csv:3": {
       "id": "csv:3",
-      "q": "What is the default AWS VPC CIDR in many regions?",
-      "a": "172.31.0.0/16"
+      "q": "What cloud computing model allows the provider to manage the operating system and hardware while the customer manages applications?",
+      "a": "Platform as a Service (PaaS)."
+    },
+    "csv:4": {
+      "id": "csv:4",
+      "q": "In the shared responsibility model, who secures the physical datacenters in Azure?",
+      "a": "Microsoft is responsible for physical security."
+    },
+    "csv:5": {
+      "id": "csv:5",
+      "q": "What is a region in Azure?",
+      "a": "A set of datacenters within a geographic area connected through a low-latency network."
+    },
+    "csv:6": {
+      "id": "csv:6",
+      "q": "What is an Azure region pair?",
+      "a": "A pair of regions used for disaster recovery to provide availability and data residency."
+    },
+    "csv:7": {
+      "id": "csv:7",
+      "q": "Which Azure feature provides physically separate datacenters within a region for high availability?",
+      "a": "Availability zones."
+    },
+    "csv:8": {
+      "id": "csv:8",
+      "q": "What is the difference between availability sets and availability zones?",
+      "a": "Availability sets distribute VMs across fault and update domains in one datacenter, while availability zones are separate physical datacenters for greater isolation."
+    },
+    "csv:9": {
+      "id": "csv:9",
+      "q": "Which Azure service lets you run containerized applications without managing servers?",
+      "a": "Azure Container Instances."
+    },
+    "csv:10": {
+      "id": "csv:10",
+      "q": "Which Azure service orchestrates containers at scale?",
+      "a": "Azure Kubernetes Service (AKS)."
+    },
+    "csv:11": {
+      "id": "csv:11",
+      "q": "What is the purpose of Azure App Service?",
+      "a": "To host web apps, REST APIs, and mobile back ends on a fully managed platform."
+    },
+    "csv:12": {
+      "id": "csv:12",
+      "q": "What does Azure Functions provide?",
+      "a": "A serverless compute service for running event-driven code without provisioning servers."
+    },
+    "csv:13": {
+      "id": "csv:13",
+      "q": "Which Azure storage service is used for storing unstructured data like images and documents?",
+      "a": "Azure Blob Storage."
+    },
+    "csv:14": {
+      "id": "csv:14",
+      "q": "Which Azure Storage replication option replicates data to another Azure region?",
+      "a": "Geo-Redundant Storage (GRS) or Read-Access Geo-Redundant Storage (RA-GRS)."
+    },
+    "csv:15": {
+      "id": "csv:15",
+      "q": "Which Azure Storage access tier is optimized for infrequently accessed data stored for at least 30 days?",
+      "a": "The cool tier."
+    },
+    "csv:16": {
+      "id": "csv:16",
+      "q": "Which Azure storage service provides durable, high-performance block storage for VMs?",
+      "a": "Azure Disk Storage (managed disks)."
+    },
+    "csv:17": {
+      "id": "csv:17",
+      "q": "Which service allows you to create a private network in Azure?",
+      "a": "Azure Virtual Network (VNet)."
+    },
+    "csv:18": {
+      "id": "csv:18",
+      "q": "Which component controls inbound and outbound traffic at the subnet level?",
+      "a": "Network Security Group (NSG)."
+    },
+    "csv:19": {
+      "id": "csv:19",
+      "q": "Which Azure service directs DNS traffic to different endpoints across global regions?",
+      "a": "Azure Traffic Manager."
+    },
+    "csv:20": {
+      "id": "csv:20",
+      "q": "What does Azure ExpressRoute provide?",
+      "a": "A private dedicated connection between on-premises networks and Azure, bypassing the public internet."
+    },
+    "csv:21": {
+      "id": "csv:21",
+      "q": "What is Azure VPN Gateway used for?",
+      "a": "Establishing encrypted VPN connections between on-premises networks and Azure through the public internet."
+    },
+    "csv:22": {
+      "id": "csv:22",
+      "q": "What is VNet peering?",
+      "a": "Connecting two virtual networks so they communicate privately through AzureΓÇÖs backbone."
+    },
+    "csv:23": {
+      "id": "csv:23",
+      "q": "Which service is used to host and manage DNS records in Azure?",
+      "a": "Azure DNS."
+    },
+    "csv:24": {
+      "id": "csv:24",
+      "q": "What is a resource group in Azure?",
+      "a": "A logical container for resources that share the same lifecycle."
+    },
+    "csv:25": {
+      "id": "csv:25",
+      "q": "What is the purpose of ARM templates?",
+      "a": "To define infrastructure as code for consistent resource deployment."
+    },
+    "csv:26": {
+      "id": "csv:26",
+      "q": "What does Azure Policy do?",
+      "a": "It enforces rules and ensures resource compliance across Azure resources."
+    },
+    "csv:27": {
+      "id": "csv:27",
+      "q": "What is the key difference between Azure Policy and RBAC?",
+      "a": "RBAC controls user permissions, while Azure Policy enforces configuration and compliance settings."
+    },
+    "csv:28": {
+      "id": "csv:28",
+      "q": "What is Azure role-based access control (RBAC)?",
+      "a": "A system for managing access to Azure resources based on roles."
+    },
+    "csv:29": {
+      "id": "csv:29",
+      "q": "Which service securely stores secrets, keys, and certificates?",
+      "a": "Azure Key Vault."
+    },
+    "csv:30": {
+      "id": "csv:30",
+      "q": "What security feature requires additional verification beyond username and password?",
+      "a": "Multi-Factor Authentication (MFA)."
+    },
+    "csv:31": {
+      "id": "csv:31",
+      "q": "What is Conditional Access?",
+      "a": "Policies that provide automated access control decisions based on conditions such as user location or device state."
+    },
+    "csv:32": {
+      "id": "csv:32",
+      "q": "Which feature allows external users like partners to access resources using their own identities?",
+      "a": "External identities (formerly B2B collaboration) in Microsoft Entra ID."
+    },
+    "csv:33": {
+      "id": "csv:33",
+      "q": "What is Azure Bastion used for?",
+      "a": "Securely connecting to virtual machines via RDP or SSH without exposing them to the public internet."
+    },
+    "csv:34": {
+      "id": "csv:34",
+      "q": "What is Azure Firewall?",
+      "a": "A managed cloud-based network security service that protects Azure virtual network resources with stateful inspection."
+    },
+    "csv:35": {
+      "id": "csv:35",
+      "q": "What does Azure DDoS Protection do?",
+      "a": "Protects applications from distributed denial-of-service attacks by detecting and mitigating malicious traffic."
+    },
+    "csv:36": {
+      "id": "csv:36",
+      "q": "What is Microsoft Defender for Cloud?",
+      "a": "A unified security management system that provides posture management and threat protection across hybrid environments."
+    },
+    "csv:37": {
+      "id": "csv:37",
+      "q": "What is Microsoft Sentinel?",
+      "a": "A cloud-native SIEM and SOAR solution for analytics, detection, and automated response to security threats."
+    },
+    "csv:38": {
+      "id": "csv:38",
+      "q": "What does Azure AD Privileged Identity Management (PIM) do?",
+      "a": "Controls, monitors, and audits privileged access to reduce the risk of excessive or misused permissions."
+    },
+    "csv:39": {
+      "id": "csv:39",
+      "q": "What is Azure Arc?",
+      "a": "A set of technologies that extends Azure management and services to on-premises, multi-cloud, and edge environments."
+    },
+    "csv:40": {
+      "id": "csv:40",
+      "q": "Which tool estimates the cost of running workloads on Azure?",
+      "a": "The Azure pricing calculator."
+    },
+    "csv:41": {
+      "id": "csv:41",
+      "q": "What is the Azure Total Cost of Ownership (TCO) calculator used for?",
+      "a": "Comparing the cost of running workloads on-premises versus in Azure by estimating potential savings."
+    },
+    "csv:42": {
+      "id": "csv:42",
+      "q": "What does Azure Cost Management and Billing help with?",
+      "a": "Tracking cloud spending, budgeting, allocating costs, and optimizing resource usage."
+    },
+    "csv:43": {
+      "id": "csv:43",
+      "q": "What is reserved instance pricing?",
+      "a": "Pre-purchasing compute capacity for one or three years at a discounted rate compared to pay-as-you-go pricing."
+    },
+    "csv:44": {
+      "id": "csv:44",
+      "q": "What is the Azure Hybrid Benefit?",
+      "a": "A licensing benefit that lets you use existing Windows Server or SQL Server licenses to reduce Azure costs."
+    },
+    "csv:45": {
+      "id": "csv:45",
+      "q": "What is an availability set?",
+      "a": "A group of VMs within a datacenter designed to distribute them across fault and update domains."
+    },
+    "csv:46": {
+      "id": "csv:46",
+      "q": "What is a fault domain in Azure?",
+      "a": "A group of hardware that shares a common power source and network switch to reduce simultaneous failure risk."
+    },
+    "csv:47": {
+      "id": "csv:47",
+      "q": "What is an update domain in Azure?",
+      "a": "A logical unit used to ensure that not all instances of a service are updated at the same time during maintenance."
+    },
+    "csv:48": {
+      "id": "csv:48",
+      "q": "Which service replicates on-premises files to Azure Storage for disaster recovery?",
+      "a": "Azure File Sync."
+    },
+    "csv:49": {
+      "id": "csv:49",
+      "q": "Which service provides serverless event-driven message delivery between applications?",
+      "a": "Azure Event Grid."
+    },
+    "csv:50": {
+      "id": "csv:50",
+      "q": "What is Azure Service Bus used for?",
+      "a": "Providing enterprise messaging through queues and publish/subscribe topics."
+    },
+    "csv:51": {
+      "id": "csv:51",
+      "q": "What is Azure Advisor?",
+      "a": "A tool that analyzes resource configuration and usage to recommend cost, performance, reliability, and security improvements."
+    },
+    "csv:52": {
+      "id": "csv:52",
+      "q": "What is Azure Monitor?",
+      "a": "A platform for collecting, analyzing, and acting on telemetry data from Azure and on-premises environments."
+    },
+    "csv:53": {
+      "id": "csv:53",
+      "q": "Which service provides application performance monitoring including request traces and metrics?",
+      "a": "Application Insights."
+    },
+    "csv:54": {
+      "id": "csv:54",
+      "q": "Which tool helps you analyze logs and metrics using a query language?",
+      "a": "Log Analytics."
+    },
+    "csv:55": {
+      "id": "csv:55",
+      "q": "What is the difference between Azure Monitor metrics and logs?",
+      "a": "Metrics are numerical values collected at regular intervals; logs are records of events containing structured or unstructured data."
+    },
+    "csv:56": {
+      "id": "csv:56",
+      "q": "What is Azure Service Health?",
+      "a": "It provides personalized information about service incidents and planned maintenance affecting your resources."
+    },
+    "csv:57": {
+      "id": "csv:57",
+      "q": "Which authentication method allows you to sign in to multiple SaaS applications using one identity?",
+      "a": "Single Sign-On (SSO)."
+    },
+    "csv:58": {
+      "id": "csv:58",
+      "q": "What is Infrastructure as Code (IaC) in the context of Azure?",
+      "a": "Managing and provisioning infrastructure through code using tools like ARM templates, Bicep, Terraform, or Azure CLI scripts."
+    },
+    "csv:59": {
+      "id": "csv:59",
+      "q": "What is Azure Cloud Shell?",
+      "a": "A browser-accessible shell for managing Azure resources using PowerShell or the Azure CLI without local setup."
+    },
+    "csv:60": {
+      "id": "csv:60",
+      "q": "What is the difference between Azure CLI and Azure PowerShell?",
+      "a": "Azure CLI uses 'az' commands across platforms, while Azure PowerShell uses PowerShell cmdlets; both manage Azure resources."
+    },
+    "csv:61": {
+      "id": "csv:61",
+      "q": "What is Azure DevOps?",
+      "a": "A suite of services for collaborating on software development, including repos, pipelines, boards, artifacts, and test plans."
+    },
+    "csv:62": {
+      "id": "csv:62",
+      "q": "What are GitHub Actions in relation to Azure?",
+      "a": "A CI/CD platform that automates workflows for building, testing, and deploying applications to Azure."
+    },
+    "csv:63": {
+      "id": "csv:63",
+      "q": "What kind of resources can a single Azure subscription contain?",
+      "a": "Any Azure resources like virtual machines, storage accounts, databases, and more, grouped logically for management and billing."
+    },
+    "csv:64": {
+      "id": "csv:64",
+      "q": "What is an Azure Management Group?",
+      "a": "A container above subscriptions used to manage multiple subscriptions collectively via policies and access control."
+    },
+    "csv:65": {
+      "id": "csv:65",
+      "q": "Which Azure support plan provides 24/7 access to technical support for critical issues?",
+      "a": "The Professional Direct support plan."
+    },
+    "csv:66": {
+      "id": "csv:66",
+      "q": "What is AzureΓÇÖs service-level agreement (SLA) for VMs deployed in an availability set?",
+      "a": "At least 99.95% availability."
+    },
+    "csv:67": {
+      "id": "csv:67",
+      "q": "Give an example of a Platform as a Service (PaaS) offering in Azure.",
+      "a": "Azure SQL Database or Azure App Service."
+    },
+    "csv:68": {
+      "id": "csv:68",
+      "q": "Name an example of a Software as a Service (SaaS) offering from Microsoft.",
+      "a": "Microsoft 365 (Office 365)."
+    },
+    "csv:69": {
+      "id": "csv:69",
+      "q": "What is the difference between public and private preview features in Azure?",
+      "a": "Public preview features are available to everyone for testing; private preview features require an invitation."
+    },
+    "csv:70": {
+      "id": "csv:70",
+      "q": "What is Azure Marketplace?",
+      "a": "An online store offering applications, services, and consulting solutions built by Microsoft and partners."
+    },
+    "csv:71": {
+      "id": "csv:71",
+      "q": "What is Microsoft Compliance Manager?",
+      "a": "A tool that helps manage compliance by tracking regulations and providing assessments and recommended actions."
+    },
+    "csv:72": {
+      "id": "csv:72",
+      "q": "Which service helps discover and classify sensitive data across Microsoft cloud services?",
+      "a": "Microsoft Purview."
+    },
+    "csv:73": {
+      "id": "csv:73",
+      "q": "What is the difference between horizontal and vertical scaling in Azure?",
+      "a": "Horizontal scaling adds more instances of resources; vertical scaling adds more power (CPU/RAM) to an existing instance."
+    },
+    "csv:74": {
+      "id": "csv:74",
+      "q": "What is elasticity in cloud computing?",
+      "a": "The ability to automatically scale resources up or down as demand changes."
+    },
+    "csv:75": {
+      "id": "csv:75",
+      "q": "What is high availability?",
+      "a": "The ability of a system to remain operational and accessible during failures by minimizing downtime."
+    },
+    "csv:76": {
+      "id": "csv:76",
+      "q": "What is fault tolerance?",
+      "a": "The ability of a system to continue operating properly even if some components fail."
+    },
+    "csv:77": {
+      "id": "csv:77",
+      "q": "What is disaster recovery?",
+      "a": "The process of restoring data and applications to resume operations after an outage or disaster."
+    },
+    "csv:78": {
+      "id": "csv:78",
+      "q": "Which service provides SQL Server in a fully managed PaaS form?",
+      "a": "Azure SQL Database or Azure SQL Managed Instance."
+    },
+    "csv:79": {
+      "id": "csv:79",
+      "q": "What is Azure Cosmos DB?",
+      "a": "A globally distributed, multi-model database service offering low latency and high throughput."
+    },
+    "csv:80": {
+      "id": "csv:80",
+      "q": "Which Azure service hosts NoSQL key-value or document data?",
+      "a": "Azure Table Storage or Cosmos DB."
+    },
+    "csv:81": {
+      "id": "csv:81",
+      "q": "What is Azure Virtual Desktop?",
+      "a": "A desktop and application virtualization service that runs on Azure."
+    },
+    "csv:82": {
+      "id": "csv:82",
+      "q": "What is Microsoft Entra Domain Services?",
+      "a": "A managed domain service providing domain join, group policy, and LDAP/NTLM without domain controllers."
+    },
+    "csv:83": {
+      "id": "csv:83",
+      "q": "What does Azure AD Application Proxy do?",
+      "a": "It provides secure remote access to on-premises web applications."
+    },
+    "csv:84": {
+      "id": "csv:84",
+      "q": "What are Azure Logic Apps used for?",
+      "a": "Automating workflows and integrating systems using prebuilt connectors."
+    },
+    "csv:85": {
+      "id": "csv:85",
+      "q": "What is Azure Data Factory?",
+      "a": "A cloud-based data integration service for orchestrating data movement and transformation."
+    },
+    "csv:86": {
+      "id": "csv:86",
+      "q": "What is Azure Synapse Analytics?",
+      "a": "An analytics service combining enterprise data warehousing and big data analytics."
+    },
+    "csv:87": {
+      "id": "csv:87",
+      "q": "What is Azure Machine Learning?",
+      "a": "A platform for building, training, and deploying machine learning models at scale."
+    },
+    "csv:88": {
+      "id": "csv:88",
+      "q": "What are Azure Cognitive Services?",
+      "a": "A collection of APIs and SDKs for adding AI features like vision, speech, and language to applications."
+    },
+    "csv:89": {
+      "id": "csv:89",
+      "q": "What does Azure Blueprints do?",
+      "a": "It packages policies, role assignments, and resource templates to implement governance and compliance at scale."
+    },
+    "csv:90": {
+      "id": "csv:90",
+      "q": "What is Azure DevTest Labs?",
+      "a": "A service for quickly provisioning development and test environments while controlling costs and policies."
+    },
+    "csv:91": {
+      "id": "csv:91",
+      "q": "What is Azure Migrate?",
+      "a": "A suite of tools to assess and migrate on-premises workloads to Azure."
+    },
+    "csv:92": {
+      "id": "csv:92",
+      "q": "What is Azure Site Recovery?",
+      "a": "A disaster recovery service that replicates workloads to Azure or secondary sites for business continuity."
+    },
+    "csv:93": {
+      "id": "csv:93",
+      "q": "What is Azure Backup?",
+      "a": "A service providing backup and recovery solutions for Azure resources and on-premises data."
+    },
+    "csv:94": {
+      "id": "csv:94",
+      "q": "What is serverless computing?",
+      "a": "An execution model where the cloud provider manages server provisioning and scaling, allowing developers to focus on code."
+    },
+    "csv:95": {
+      "id": "csv:95",
+      "q": "What is a role assignment in Azure RBAC?",
+      "a": "It binds a role definition to a user, group, service principal, or managed identity at a particular scope to grant permissions."
+    },
+    "csv:96": {
+      "id": "csv:96",
+      "q": "What is an Azure service-level agreement (SLA)?",
+      "a": "A formal guarantee from Microsoft specifying uptime and performance for Azure services."
+    },
+    "csv:97": {
+      "id": "csv:97",
+      "q": "What happens if an Azure service does not meet its SLA?",
+      "a": "Customers may be eligible for service credits against their Azure subscription."
+    },
+    "csv:98": {
+      "id": "csv:98",
+      "q": "Which tool logs control-plane operations like create, update, and delete on Azure resources?",
+      "a": "Azure Activity Log."
+    },
+    "csv:99": {
+      "id": "csv:99",
+      "q": "What is the difference between the Azure Activity Log and Diagnostic Logs?",
+      "a": "Activity Logs capture control-plane events, while Diagnostic Logs capture data-plane events produced by resources."
+    },
+    "csv:100": {
+      "id": "csv:100",
+      "q": "What is Azure Databricks?",
+      "a": "An Apache Spark-based analytics platform optimized for Azure."
+    },
+    "csv:101": {
+      "id": "csv:101",
+      "q": "What is Azure Container Registry?",
+      "a": "A managed Docker registry service for storing and managing container images."
+    },
+    "csv:102": {
+      "id": "csv:102",
+      "q": "What is Azure AD B2C?",
+      "a": "A customer identity and access management service enabling user sign-up and sign-in with social or local accounts."
+    },
+    "csv:103": {
+      "id": "csv:103",
+      "q": "Which Azure service provides outbound internet connectivity using a stable set of IP addresses for a virtual network?",
+      "a": "Azure Virtual Network NAT Gateway."
     }
   },
   "progress": {
     "csv:1": {
-      "box": 2,
-      "next_due": "2025-09-16T15:15:17.075848+00:00",
-      "last_conf": "h",
-      "reps": 1
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
     },
     "csv:2": {
-      "box": 2,
-      "next_due": "2025-09-16T15:15:31.762884+00:00",
-      "last_conf": "h",
+      "box": 1,
+      "next_due": "2025-09-15T16:29:00.568780+00:00",
+      "last_conf": "l",
       "reps": 1
     },
     "csv:3": {
       "box": 1,
-      "next_due": "2025-09-15T15:15:49.980866+00:00",
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:4": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:5": {
+      "box": 2,
+      "next_due": "2025-09-16T04:31:47.742015+00:00",
+      "last_conf": "m",
+      "reps": 1
+    },
+    "csv:6": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:7": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:8": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:9": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:10": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:11": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:12": {
+      "box": 2,
+      "next_due": "2025-09-16T16:30:46.593765+00:00",
+      "last_conf": "h",
+      "reps": 1
+    },
+    "csv:13": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:14": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:15": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:16": {
+      "box": 1,
+      "next_due": "2025-09-15T16:27:22.918742+00:00",
       "last_conf": "l",
       "reps": 1
+    },
+    "csv:17": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:18": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:19": {
+      "box": 1,
+      "next_due": "2025-09-15T16:31:31.092266+00:00",
+      "last_conf": "l",
+      "reps": 1
+    },
+    "csv:20": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:21": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:22": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:23": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:24": {
+      "box": 2,
+      "next_due": "2025-09-16T16:29:10.429941+00:00",
+      "last_conf": "h",
+      "reps": 1
+    },
+    "csv:25": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:26": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:27": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:28": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:29": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:30": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:31": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:32": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:33": {
+      "box": 2,
+      "next_due": "2025-09-16T16:31:13.364924+00:00",
+      "last_conf": "h",
+      "reps": 1
+    },
+    "csv:34": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:35": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:36": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:37": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:38": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:39": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:40": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:41": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:42": {
+      "box": 2,
+      "next_due": "2025-09-16T16:29:30.668292+00:00",
+      "last_conf": "h",
+      "reps": 1
+    },
+    "csv:43": {
+      "box": 1,
+      "next_due": "2025-09-15T16:28:49.840531+00:00",
+      "last_conf": "l",
+      "reps": 1
+    },
+    "csv:44": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:45": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:46": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:47": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:48": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:49": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:50": {
+      "box": 1,
+      "next_due": "2025-09-15T16:30:31.313670+00:00",
+      "last_conf": "l",
+      "reps": 1
+    },
+    "csv:51": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:52": {
+      "box": 2,
+      "next_due": "2025-09-16T04:32:57.600120+00:00",
+      "last_conf": "m",
+      "reps": 1
+    },
+    "csv:53": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:54": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:55": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:56": {
+      "box": 2,
+      "next_due": "2025-09-16T04:27:02.444478+00:00",
+      "last_conf": "m",
+      "reps": 1
+    },
+    "csv:57": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:58": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:59": {
+      "box": 2,
+      "next_due": "2025-09-16T16:26:26.183604+00:00",
+      "last_conf": "h",
+      "reps": 1
+    },
+    "csv:60": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:61": {
+      "box": 2,
+      "next_due": "2025-09-16T04:23:09.724591+00:00",
+      "last_conf": "m",
+      "reps": 1
+    },
+    "csv:62": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:63": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:64": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:65": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:66": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:67": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:68": {
+      "box": 2,
+      "next_due": "2025-09-16T04:28:37.699159+00:00",
+      "last_conf": "m",
+      "reps": 1
+    },
+    "csv:69": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:70": {
+      "box": 2,
+      "next_due": "2025-09-16T16:29:21.628328+00:00",
+      "last_conf": "h",
+      "reps": 1
+    },
+    "csv:71": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:72": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:73": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:74": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:75": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:76": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:77": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:78": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:79": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:80": {
+      "box": 1,
+      "next_due": "2025-09-15T16:32:15.947681+00:00",
+      "last_conf": "l",
+      "reps": 1
+    },
+    "csv:81": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:82": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:83": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:84": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:85": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:86": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:87": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:88": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:89": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:90": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:91": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:92": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:93": {
+      "box": 2,
+      "next_due": "2025-09-16T16:26:42.053736+00:00",
+      "last_conf": "h",
+      "reps": 1
+    },
+    "csv:94": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:95": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:96": {
+      "box": 2,
+      "next_due": "2025-09-16T16:28:10.599071+00:00",
+      "last_conf": "h",
+      "reps": 1
+    },
+    "csv:97": {
+      "box": 1,
+      "next_due": "2025-09-15T16:27:36.024600+00:00",
+      "last_conf": "l",
+      "reps": 1
+    },
+    "csv:98": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:99": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:100": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:101": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:102": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
+    },
+    "csv:103": {
+      "box": 1,
+      "next_due": "2025-09-15T16:22:16.990465+00:00",
+      "last_conf": null,
+      "reps": 0
     }
   },
   "history": [
     {
-      "ts": "2025-09-15T15:15:17.075874+00:00",
-      "cid": "csv:1",
+      "ts": "2025-09-15T16:23:09.724616+00:00",
+      "cid": "csv:61",
+      "old_box": 1,
+      "new_box": 2,
+      "conf": "m"
+    },
+    {
+      "ts": "2025-09-15T16:26:26.183628+00:00",
+      "cid": "csv:59",
       "old_box": 1,
       "new_box": 2,
       "conf": "h"
     },
     {
-      "ts": "2025-09-15T15:15:31.762908+00:00",
-      "cid": "csv:2",
+      "ts": "2025-09-15T16:26:42.053759+00:00",
+      "cid": "csv:93",
       "old_box": 1,
       "new_box": 2,
       "conf": "h"
     },
     {
-      "ts": "2025-09-15T15:15:49.980893+00:00",
-      "cid": "csv:3",
+      "ts": "2025-09-15T16:27:02.444504+00:00",
+      "cid": "csv:56",
+      "old_box": 1,
+      "new_box": 2,
+      "conf": "m"
+    },
+    {
+      "ts": "2025-09-15T16:27:22.918767+00:00",
+      "cid": "csv:16",
       "old_box": 1,
       "new_box": 1,
       "conf": "l"
+    },
+    {
+      "ts": "2025-09-15T16:27:36.024625+00:00",
+      "cid": "csv:97",
+      "old_box": 1,
+      "new_box": 1,
+      "conf": "l"
+    },
+    {
+      "ts": "2025-09-15T16:28:10.599093+00:00",
+      "cid": "csv:96",
+      "old_box": 1,
+      "new_box": 2,
+      "conf": "h"
+    },
+    {
+      "ts": "2025-09-15T16:28:37.699184+00:00",
+      "cid": "csv:68",
+      "old_box": 1,
+      "new_box": 2,
+      "conf": "m"
+    },
+    {
+      "ts": "2025-09-15T16:28:49.840549+00:00",
+      "cid": "csv:43",
+      "old_box": 1,
+      "new_box": 1,
+      "conf": "l"
+    },
+    {
+      "ts": "2025-09-15T16:29:00.568803+00:00",
+      "cid": "csv:2",
+      "old_box": 1,
+      "new_box": 1,
+      "conf": "l"
+    },
+    {
+      "ts": "2025-09-15T16:29:10.429965+00:00",
+      "cid": "csv:24",
+      "old_box": 1,
+      "new_box": 2,
+      "conf": "h"
+    },
+    {
+      "ts": "2025-09-15T16:29:21.628352+00:00",
+      "cid": "csv:70",
+      "old_box": 1,
+      "new_box": 2,
+      "conf": "h"
+    },
+    {
+      "ts": "2025-09-15T16:29:30.668316+00:00",
+      "cid": "csv:42",
+      "old_box": 1,
+      "new_box": 2,
+      "conf": "h"
+    },
+    {
+      "ts": "2025-09-15T16:30:31.313693+00:00",
+      "cid": "csv:50",
+      "old_box": 1,
+      "new_box": 1,
+      "conf": "l"
+    },
+    {
+      "ts": "2025-09-15T16:30:46.593789+00:00",
+      "cid": "csv:12",
+      "old_box": 1,
+      "new_box": 2,
+      "conf": "h"
+    },
+    {
+      "ts": "2025-09-15T16:31:13.364947+00:00",
+      "cid": "csv:33",
+      "old_box": 1,
+      "new_box": 2,
+      "conf": "h"
+    },
+    {
+      "ts": "2025-09-15T16:31:31.092289+00:00",
+      "cid": "csv:19",
+      "old_box": 1,
+      "new_box": 1,
+      "conf": "l"
+    },
+    {
+      "ts": "2025-09-15T16:31:47.742040+00:00",
+      "cid": "csv:5",
+      "old_box": 1,
+      "new_box": 2,
+      "conf": "m"
+    },
+    {
+      "ts": "2025-09-15T16:32:15.947704+00:00",
+      "cid": "csv:80",
+      "old_box": 1,
+      "new_box": 1,
+      "conf": "l"
+    },
+    {
+      "ts": "2025-09-15T16:32:57.600143+00:00",
+      "cid": "csv:52",
+      "old_box": 1,
+      "new_box": 2,
+      "conf": "m"
     }
   ]
 }

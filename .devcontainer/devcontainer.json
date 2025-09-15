@@ -12,7 +12,7 @@
     "POETRY_VIRTUALENVS_IN_PROJECT": "true",
     "POETRY_NO_INTERACTION": "1"
   },
-  "postCreateCommand": "/bin/bash -lc 'curl -sSL https://install.python-poetry.org | python3 - && echo \"export PATH=\\$HOME/.local/bin:\\$PATH\" >> ~/.bashrc && export PATH=\"$HOME/.local/bin:$PATH\" && poetry config virtualenvs.in-project true && if [ -f pyproject.toml ]; then poetry install --no-ansi; fi'",
+  "postCreateCommand": "/bin/bash -lc 'sudo apt-get update && sudo apt-get install -y git-lfs && git lfs install --system && curl -sSL https://install.python-poetry.org | python3 - && echo \"export PATH=\\$HOME/.local/bin:\\$PATH\" >> ~/.bashrc && export PATH=\"$HOME/.local/bin:$PATH\" && poetry config virtualenvs.in-project true && if [ -f pyproject.toml ]; then poetry install --no-ansi; fi'",
   "customizations": {
     "vscode": {
       "extensions": [

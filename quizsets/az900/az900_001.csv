@@ -1,0 +1,104 @@
+q,a
+What cloud deployment models are supported by Azure?,"Public, private, and hybrid cloud models."
+What are the three main service models of cloud computing?,"Infrastructure as a Service (IaaS), Platform as a Service (PaaS), and Software as a Service (SaaS)."
+What cloud computing model allows the provider to manage the operating system and hardware while the customer manages applications?,Platform as a Service (PaaS).
+"In the shared responsibility model, who secures the physical datacenters in Azure?",Microsoft is responsible for physical security.
+What is a region in Azure?,A set of datacenters within a geographic area connected through a low-latency network.
+What is an Azure region pair?,A pair of regions used for disaster recovery to provide availability and data residency.
+Which Azure feature provides physically separate datacenters within a region for high availability?,Availability zones.
+What is the difference between availability sets and availability zones?,"Availability sets distribute VMs across fault and update domains in one datacenter, while availability zones are separate physical datacenters for greater isolation."
+Which Azure service lets you run containerized applications without managing servers?,Azure Container Instances.
+Which Azure service orchestrates containers at scale?,Azure Kubernetes Service (AKS).
+What is the purpose of Azure App Service?,"To host web apps, REST APIs, and mobile back ends on a fully managed platform."
+What does Azure Functions provide?,A serverless compute service for running event-driven code without provisioning servers.
+Which Azure storage service is used for storing unstructured data like images and documents?,Azure Blob Storage.
+Which Azure Storage replication option replicates data to another Azure region?,Geo-Redundant Storage (GRS) or Read-Access Geo-Redundant Storage (RA-GRS).
+Which Azure Storage access tier is optimized for infrequently accessed data stored for at least 30 days?,The cool tier.
+"Which Azure storage service provides durable, high-performance block storage for VMs?",Azure Disk Storage (managed disks).
+Which service allows you to create a private network in Azure?,Azure Virtual Network (VNet).
+Which component controls inbound and outbound traffic at the subnet level?,Network Security Group (NSG).
+Which Azure service directs DNS traffic to different endpoints across global regions?,Azure Traffic Manager.
+What does Azure ExpressRoute provide?,"A private dedicated connection between on-premises networks and Azure, bypassing the public internet."
+What is Azure VPN Gateway used for?,Establishing encrypted VPN connections between on-premises networks and Azure through the public internet.
+What is VNet peering?,Connecting two virtual networks so they communicate privately through AzureΓÇÖs backbone.
+Which service is used to host and manage DNS records in Azure?,Azure DNS.
+What is a resource group in Azure?,A logical container for resources that share the same lifecycle.
+What is the purpose of ARM templates?,To define infrastructure as code for consistent resource deployment.
+What does Azure Policy do?,It enforces rules and ensures resource compliance across Azure resources.
+What is the key difference between Azure Policy and RBAC?,"RBAC controls user permissions, while Azure Policy enforces configuration and compliance settings."
+What is Azure role-based access control (RBAC)?,A system for managing access to Azure resources based on roles.
+"Which service securely stores secrets, keys, and certificates?",Azure Key Vault.
+What security feature requires additional verification beyond username and password?,Multi-Factor Authentication (MFA).
+What is Conditional Access?,Policies that provide automated access control decisions based on conditions such as user location or device state.
+Which feature allows external users like partners to access resources using their own identities?,External identities (formerly B2B collaboration) in Microsoft Entra ID.
+What is Azure Bastion used for?,Securely connecting to virtual machines via RDP or SSH without exposing them to the public internet.
+What is Azure Firewall?,A managed cloud-based network security service that protects Azure virtual network resources with stateful inspection.
+What does Azure DDoS Protection do?,Protects applications from distributed denial-of-service attacks by detecting and mitigating malicious traffic.
+What is Microsoft Defender for Cloud?,A unified security management system that provides posture management and threat protection across hybrid environments.
+What is Microsoft Sentinel?,"A cloud-native SIEM and SOAR solution for analytics, detection, and automated response to security threats."
+What does Azure AD Privileged Identity Management (PIM) do?,"Controls, monitors, and audits privileged access to reduce the risk of excessive or misused permissions."
+What is Azure Arc?,"A set of technologies that extends Azure management and services to on-premises, multi-cloud, and edge environments."
+Which tool estimates the cost of running workloads on Azure?,The Azure pricing calculator.
+What is the Azure Total Cost of Ownership (TCO) calculator used for?,Comparing the cost of running workloads on-premises versus in Azure by estimating potential savings.
+What does Azure Cost Management and Billing help with?,"Tracking cloud spending, budgeting, allocating costs, and optimizing resource usage."
+What is reserved instance pricing?,Pre-purchasing compute capacity for one or three years at a discounted rate compared to pay-as-you-go pricing.
+What is the Azure Hybrid Benefit?,A licensing benefit that lets you use existing Windows Server or SQL Server licenses to reduce Azure costs.
+What is an availability set?,A group of VMs within a datacenter designed to distribute them across fault and update domains.
+What is a fault domain in Azure?,A group of hardware that shares a common power source and network switch to reduce simultaneous failure risk.
+What is an update domain in Azure?,A logical unit used to ensure that not all instances of a service are updated at the same time during maintenance.
+Which service replicates on-premises files to Azure Storage for disaster recovery?,Azure File Sync.
+Which service provides serverless event-driven message delivery between applications?,Azure Event Grid.
+What is Azure Service Bus used for?,Providing enterprise messaging through queues and publish/subscribe topics.
+What is Azure Advisor?,"A tool that analyzes resource configuration and usage to recommend cost, performance, reliability, and security improvements."
+What is Azure Monitor?,"A platform for collecting, analyzing, and acting on telemetry data from Azure and on-premises environments."
+Which service provides application performance monitoring including request traces and metrics?,Application Insights.
+Which tool helps you analyze logs and metrics using a query language?,Log Analytics.
+What is the difference between Azure Monitor metrics and logs?,Metrics are numerical values collected at regular intervals; logs are records of events containing structured or unstructured data.
+What is Azure Service Health?,It provides personalized information about service incidents and planned maintenance affecting your resources.
+Which authentication method allows you to sign in to multiple SaaS applications using one identity?,Single Sign-On (SSO).
+What is Infrastructure as Code (IaC) in the context of Azure?,"Managing and provisioning infrastructure through code using tools like ARM templates, Bicep, Terraform, or Azure CLI scripts."
+What is Azure Cloud Shell?,A browser-accessible shell for managing Azure resources using PowerShell or the Azure CLI without local setup.
+What is the difference between Azure CLI and Azure PowerShell?,"Azure CLI uses 'az' commands across platforms, while Azure PowerShell uses PowerShell cmdlets; both manage Azure resources."
+What is Azure DevOps?,"A suite of services for collaborating on software development, including repos, pipelines, boards, artifacts, and test plans."
+What are GitHub Actions in relation to Azure?,"A CI/CD platform that automates workflows for building, testing, and deploying applications to Azure."
+What kind of resources can a single Azure subscription contain?,"Any Azure resources like virtual machines, storage accounts, databases, and more, grouped logically for management and billing."
+What is an Azure Management Group?,A container above subscriptions used to manage multiple subscriptions collectively via policies and access control.
+Which Azure support plan provides 24/7 access to technical support for critical issues?,The Professional Direct support plan.
+What is AzureΓÇÖs service-level agreement (SLA) for VMs deployed in an availability set?,At least 99.95% availability.
+Give an example of a Platform as a Service (PaaS) offering in Azure.,Azure SQL Database or Azure App Service.
+Name an example of a Software as a Service (SaaS) offering from Microsoft.,Microsoft 365 (Office 365).
+What is the difference between public and private preview features in Azure?,Public preview features are available to everyone for testing; private preview features require an invitation.
+What is Azure Marketplace?,"An online store offering applications, services, and consulting solutions built by Microsoft and partners."
+What is Microsoft Compliance Manager?,A tool that helps manage compliance by tracking regulations and providing assessments and recommended actions.
+Which service helps discover and classify sensitive data across Microsoft cloud services?,Microsoft Purview.
+What is the difference between horizontal and vertical scaling in Azure?,Horizontal scaling adds more instances of resources; vertical scaling adds more power (CPU/RAM) to an existing instance.
+What is elasticity in cloud computing?,The ability to automatically scale resources up or down as demand changes.
+What is high availability?,The ability of a system to remain operational and accessible during failures by minimizing downtime.
+What is fault tolerance?,The ability of a system to continue operating properly even if some components fail.
+What is disaster recovery?,The process of restoring data and applications to resume operations after an outage or disaster.
+Which service provides SQL Server in a fully managed PaaS form?,Azure SQL Database or Azure SQL Managed Instance.
+What is Azure Cosmos DB?,"A globally distributed, multi-model database service offering low latency and high throughput."
+Which Azure service hosts NoSQL key-value or document data?,Azure Table Storage or Cosmos DB.
+What is Azure Virtual Desktop?,A desktop and application virtualization service that runs on Azure.
+What is Microsoft Entra Domain Services?,"A managed domain service providing domain join, group policy, and LDAP/NTLM without domain controllers."
+What does Azure AD Application Proxy do?,It provides secure remote access to on-premises web applications.
+What are Azure Logic Apps used for?,Automating workflows and integrating systems using prebuilt connectors.
+What is Azure Data Factory?,A cloud-based data integration service for orchestrating data movement and transformation.
+What is Azure Synapse Analytics?,An analytics service combining enterprise data warehousing and big data analytics.
+What is Azure Machine Learning?,"A platform for building, training, and deploying machine learning models at scale."
+What are Azure Cognitive Services?,"A collection of APIs and SDKs for adding AI features like vision, speech, and language to applications."
+What does Azure Blueprints do?,"It packages policies, role assignments, and resource templates to implement governance and compliance at scale."
+What is Azure DevTest Labs?,A service for quickly provisioning development and test environments while controlling costs and policies.
+What is Azure Migrate?,A suite of tools to assess and migrate on-premises workloads to Azure.
+What is Azure Site Recovery?,A disaster recovery service that replicates workloads to Azure or secondary sites for business continuity.
+What is Azure Backup?,A service providing backup and recovery solutions for Azure resources and on-premises data.
+What is serverless computing?,"An execution model where the cloud provider manages server provisioning and scaling, allowing developers to focus on code."
+What is a role assignment in Azure RBAC?,"It binds a role definition to a user, group, service principal, or managed identity at a particular scope to grant permissions."
+What is an Azure service-level agreement (SLA)?,A formal guarantee from Microsoft specifying uptime and performance for Azure services.
+What happens if an Azure service does not meet its SLA?,Customers may be eligible for service credits against their Azure subscription.
+"Which tool logs control-plane operations like create, update, and delete on Azure resources?",Azure Activity Log.
+What is the difference between the Azure Activity Log and Diagnostic Logs?,"Activity Logs capture control-plane events, while Diagnostic Logs capture data-plane events produced by resources."
+What is Azure Databricks?,An Apache Spark-based analytics platform optimized for Azure.
+What is Azure Container Registry?,A managed Docker registry service for storing and managing container images.
+What is Azure AD B2C?,A customer identity and access management service enabling user sign-up and sign-in with social or local accounts.
+Which Azure service provides outbound internet connectivity using a stable set of IP addresses for a virtual network?,Azure Virtual Network NAT Gateway.
