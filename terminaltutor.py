@@ -1,29 +1,41 @@
 #!/usr/bin/env python3
-# Tiny Leitner CLI with confidence tagging.
-# - Boxes: 1..5 with intervals {1:0d, 2:1d, 3:3d, 4:7d, 5:21d}
-# - Deck from CSV (q,a) or JSON ([{"q": "...", "a": "..."}])
-# - State persisted in JSON (card box, next_due, history)
+# terminaltutor.py
+# Tiny Leitner CLI with confidence tagging and configurable state directory.
+#
+# Changes vs prior version:
+# - Module name: terminaltutor.py
+# - State filename default: state.json (not leitner_state.json)
+# - New global option: --state-dir (directory for state.json; defaults to ".")
+# - Confidence behavior:
+#     l (low) -> reset to Box 1, due now
+#     m (medium) -> promote +1 box, schedule full interval
+#     h (high) -> promote +2 boxes, schedule full interval
+#
+# Features:
+# - Boxes 1..5 with intervals {1:0d, 2:1d, 3:3d, 4:7d, 5:21d}
+# - Decks from CSV (q,a[,id]) or JSON ([{"q":"...","a":"...","id":"..."}])
+# - Commands: init | study | due | stats | add
+# - State persisted in JSON
 
 import argparse
 import csv
 import json
 import random
-from dataclasses import dataclass, asdict
-from datetime import datetime, timedelta, timezone
+from dataclasses import asdict, dataclass
+from datetime import UTC, datetime, timedelta
 from pathlib import Path
-from typing import Dict, List, Optional
 
-STATE_FILE_DEFAULT = Path("leitner_state.json")
+DEFAULT_STATE_FILENAME = "state.json"
 MAX_BOX = 5
 BOX_INTERVALS_DAYS = {1: 0, 2: 1, 3: 3, 4: 7, 5: 21}
 
 
 def utcnow() -> datetime:
-    return datetime.now(timezone.utc)
+    return datetime.now(UTC)
 
 
 def to_iso(dt: datetime) -> str:
-    return dt.astimezone(timezone.utc).isoformat()
+    return dt.astimezone(UTC).isoformat()
 
 
 def from_iso(s: str) -> datetime:
@@ -41,21 +53,34 @@ class Card:
 class CardState:
     box: int
     next_due: str  # ISO datetime
-    last_conf: Optional[str] = None  # "l"|"m"|"h"|None
+    last_conf: str | None = None  # "l"|"m"|"h"|None
     reps: int = 0  # total reviews
 
 
 @dataclass
 class State:
     created: str
-    cards: Dict[str, Card]
-    progress: Dict[str, CardState]  # keyed by card.id
-    history: List[dict]
+    cards: dict[str, Card]
+    progress: dict[str, CardState]  # keyed by card.id
+    history: list[dict]
 
 
-# ---------- I/O ----------
+# ---------------- Path helpers ----------------
 
-def load_state(path: Path) -> Optional[State]:
+
+def resolve_state_path(state_dir: str | None) -> Path:
+    """
+    Build the full path to the state file as <state_dir>/state.json.
+    If state_dir is None, default to current directory.
+    """
+    base = Path(state_dir or ".").expanduser().resolve()
+    return base / DEFAULT_STATE_FILENAME
+
+
+# ---------------- I/O ----------------
+
+
+def load_state(path: Path) -> State | None:
     if not path.exists():
         return None
     with path.open("r", encoding="utf-8") as f:
@@ -71,6 +96,7 @@ def load_state(path: Path) -> Optional[State]:
 
 
 def save_state(state: State, path: Path) -> None:
+    path.parent.mkdir(parents=True, exist_ok=True)
     serial = {
         "created": state.created,
         "cards": {k: asdict(v) for k, v in state.cards.items()},
@@ -83,9 +109,10 @@ def save_state(state: State, path: Path) -> None:
     tmp.replace(path)
 
 
-# ---------- Deck loading ----------
+# ---------------- Deck loading ----------------
 
-def load_deck(deck_path: Path) -> List[Card]:
+
+def load_deck(deck_path: Path) -> list[Card]:
     if deck_path.suffix.lower() == ".csv":
         return load_deck_csv(deck_path)
     elif deck_path.suffix.lower() == ".json":
@@ -94,8 +121,8 @@ def load_deck(deck_path: Path) -> List[Card]:
         raise SystemExit("Deck must be .csv or .json")
 
 
-def load_deck_csv(path: Path) -> List[Card]:
-    cards: List[Card] = []
+def load_deck_csv(path: Path) -> list[Card]:
+    cards: list[Card] = []
     with path.open("r", encoding="utf-8-sig", newline="") as f:
         reader = csv.DictReader(f)
         # Expect columns: q, a  (id optional)
@@ -113,10 +140,10 @@ def load_deck_csv(path: Path) -> List[Card]:
     return cards
 
 
-def load_deck_json(path: Path) -> List[Card]:
+def load_deck_json(path: Path) -> list[Card]:
     with path.open("r", encoding="utf-8") as f:
         data = json.load(f)
-    cards: List[Card] = []
+    cards: list[Card] = []
     for i, item in enumerate(data, start=1):
         q = (item.get("q") or "").strip()
         a = (item.get("a") or "").strip()
@@ -129,68 +156,43 @@ def load_deck_json(path: Path) -> List[Card]:
     return cards
 
 
-# ---------- Scheduling ----------
+# ---------------- Scheduling ----------------
+
 
 def interval_for_box(box: int) -> timedelta:
     days = BOX_INTERVALS_DAYS.get(box, BOX_INTERVALS_DAYS[MAX_BOX])
     return timedelta(days=days)
 
 
-def schedule_after(box: int, factor: float = 1.0) -> datetime:
-    base = interval_for_box(box)
-    delta = timedelta(seconds=max(0, int(base.total_seconds() * factor)))
-    return utcnow() + delta
+def schedule_after(box: int) -> datetime:
+    """Schedule at the full interval for the given box."""
+    return utcnow() + interval_for_box(box)
 
 
-def promote(box: int) -> int:
-    return min(MAX_BOX, box + 1)
+def promote(box: int, n: int = 1) -> int:
+    return min(MAX_BOX, box + max(1, n))
 
 
 def demote_to_1() -> int:
     return 1
 
 
-# ---------- Commands ----------
+# ---------------- Commands ----------------
+
 
 def cmd_init(args: argparse.Namespace) -> None:
     deck = load_deck(Path(args.deck))
-    if args.state and Path(args.state).exists() and not args.force:
+    state_path = resolve_state_path(args.state_dir)
+    if state_path.exists() and not args.force:
         raise SystemExit(
-            f"State file {args.state} exists. Use --force to overwrite."
+            f"State file {state_path} exists. Use --force to overwrite or choose another --state-dir."
         )
     now = to_iso(utcnow())
     cards = {c.id: c for c in deck}
-    progress = {
-        c.id: CardState(box=1, next_due=now) for c in deck
-    }
+    progress = {c.id: CardState(box=1, next_due=now) for c in deck}
     state = State(created=now, cards=cards, progress=progress, history=[])
-    save_state(state, Path(args.state))
-    print(f"Initialized {len(deck)} cards into {args.state}")
-
-
-def due_cards(state: State, include_not_due: bool = False) -> List[str]:
-    now = utcnow()
-    items = []
-    for cid, st in state.progress.items():
-        due = from_iso(st.next_due)
-        if include_not_due or due <= now:
-            items.append((cid, due))
-    # sort by next_due, then randomize slightly within same due window
-    items.sort(key=lambda t: t[1])
-    # Keep as list of ids
-    return [cid for cid, _ in items]
-
-
-def cmd_due(args: argparse.Namespace) -> None:
-    state = require_state(Path(args.state))
-    ids = due_cards(state, include_not_due=args.all)
-    print(f"Due count: {len([i for i in ids if from_iso(state.progress[i].next_due) <= utcnow()])}")
-    print(f"Total fetched (respecting --all): {len(ids)}")
-    for cid in ids[: args.limit or 50]:
-        st = state.progress[cid]
-        print(
-            f"- {cid} | box {st.box} | due {from_iso(st.next_due).astimezone().strftime('%Y-%m-%d %H:%M')}"
-        )
+    save_state(state, state_path)
+    print(f"Initialized {len(deck)} cards into {state_path}")
 
 
 def require_state(path: Path) -> State:
@@ -200,8 +202,35 @@ def require_state(path: Path) -> State:
     return state
 
 
+def due_cards(state: State, include_not_due: bool = False) -> list[str]:
+    now = utcnow()
+    items = []
+    for cid, st in state.progress.items():
+        due = from_iso(st.next_due)
+        if include_not_due or due <= now:
+            items.append((cid, due))
+    items.sort(key=lambda t: t[1])
+    return [cid for cid, _ in items]
+
+
+def cmd_due(args: argparse.Namespace) -> None:
+    state_path = resolve_state_path(args.state_dir)
+    state = require_state(state_path)
+    ids = due_cards(state, include_not_due=args.all)
+    due_now = sum(1 for i in ids if from_iso(state.progress[i].next_due) <= utcnow())
+    print(f"Due count: {due_now}")
+    print(f"Total fetched (respecting --all): {len(ids)}")
+    limit = args.limit or 50
+    for cid in ids[:limit]:
+        st = state.progress[cid]
+        print(
+            f"- {cid} | box {st.box} | due {from_iso(st.next_due).astimezone().strftime('%Y-%m-%d %H:%M')}"
+        )
+
+
 def cmd_stats(args: argparse.Namespace) -> None:
-    state = require_state(Path(args.state))
+    state_path = resolve_state_path(args.state_dir)
+    state = require_state(state_path)
     box_counts = {b: 0 for b in range(1, MAX_BOX + 1)}
     due_count = 0
     now = utcnow()
@@ -228,8 +257,8 @@ def ask(prompt: str) -> str:
 
 
 def cmd_study(args: argparse.Namespace) -> None:
-    path = Path(args.state)
-    state = require_state(path)
+    state_path = resolve_state_path(args.state_dir)
+    state = require_state(state_path)
     pool = due_cards(state, include_not_due=args.all)
     if not pool:
         print("Nothing due. Use --all to include not-due cards, or come back later.")
@@ -241,7 +270,9 @@ def cmd_study(args: argparse.Namespace) -> None:
     limit = args.limit or len(pool)
     taken = 0
 
-    print("Study mode: [Enter]=show answer | then grade: (l)ow wrong, (m)edium, (h)igh | (s)kip | (q)uit")
+    print(
+        "Study mode: [Enter]=show answer | then grade: (l)ow, (m)edium(+1 box), (h)igh(+2 boxes) | (s)kip | (q)uit"
+    )
     for cid in pool:
         if taken >= limit:
             break
@@ -249,7 +280,9 @@ def cmd_study(args: argparse.Namespace) -> None:
         st = state.progress[cid]
 
         print("\n" + "-" * 70)
-        print(f"[{taken+1}/{limit}] Box {st.box}  Due: {from_iso(st.next_due).astimezone().strftime('%Y-%m-%d %H:%M')}")
+        print(
+            f"[{taken + 1}/{limit}] Box {st.box}  Due: {from_iso(st.next_due).astimezone().strftime('%Y-%m-%d %H:%M')}"
+        )
         print(f"Q: {card.q}")
         key = ask("Press Enter to reveal, or (s)kip/(q)uit: ").strip().lower()
         if key == "q":
@@ -268,13 +301,13 @@ def cmd_study(args: argparse.Namespace) -> None:
         old_box = st.box
         if conf == "l":
             st.box = demote_to_1()
-            st.next_due = to_iso(schedule_after(st.box, factor=0.0))  # due now
+            st.next_due = to_iso(utcnow())  # due now
         elif conf == "m":
-            st.box = promote(st.box)
-            st.next_due = to_iso(schedule_after(st.box, factor=0.5))  # half interval
+            st.box = promote(st.box, n=1)
+            st.next_due = to_iso(schedule_after(st.box))  # full interval of new box
         else:  # "h"
-            st.box = promote(st.box)
-            st.next_due = to_iso(schedule_after(st.box, factor=1.0))  # full interval
+            st.box = promote(st.box, n=2)
+            st.next_due = to_iso(schedule_after(st.box))  # full interval of new box
 
         st.last_conf = conf
         st.reps += 1
@@ -288,17 +321,16 @@ def cmd_study(args: argparse.Namespace) -> None:
                 "conf": conf,
             }
         )
-        save_state(state, path)
+        save_state(state, state_path)
         taken += 1
 
     print("\nSession complete.")
-    cmd_stats(argparse.Namespace(state=str(path)))
+    cmd_stats(argparse.Namespace(state_dir=args.state_dir))
 
 
 def cmd_add(args: argparse.Namespace) -> None:
-    path = Path(args.state)
-    state = require_state(path)
-    # Add from CSV/JSON deck file
+    state_path = resolve_state_path(args.state_dir)
+    state = require_state(state_path)
     new_cards = load_deck(Path(args.deck))
     existing_ids = set(state.cards.keys())
     added = 0
@@ -309,13 +341,20 @@ def cmd_add(args: argparse.Namespace) -> None:
         state.cards[c.id] = c
         state.progress[c.id] = CardState(box=1, next_due=nowiso)
         added += 1
-    save_state(state, path)
+    save_state(state, state_path)
     print(f"Added {added} new cards.")
 
 
+# ---------------- Parser ----------------
+
+
 def build_parser() -> argparse.ArgumentParser:
-    p = argparse.ArgumentParser(description="Tiny Leitner CLI with confidence tagging.")
-    p.add_argument("--state", default=str(STATE_FILE_DEFAULT), help="Path to state JSON file (default: leitner_state.json)")
+    p = argparse.ArgumentParser(description="TerminalTutor — Leitner CLI with confidence tagging.")
+    p.add_argument(
+        "--state-dir",
+        default=".",
+        help="Directory that holds the state.json file (default: current directory).",
+    )
 
     sub = p.add_subparsers(dest="cmd", required=True)
 
@@ -326,7 +365,9 @@ def build_parser() -> argparse.ArgumentParser:
 
     sp_study = sub.add_parser("study", help="Run a study session")
     sp_study.add_argument("--limit", type=int, help="Max cards this session")
-    sp_study.add_argument("--all", action="store_true", help="Include not-due cards to fill session")
+    sp_study.add_argument(
+        "--all", action="store_true", help="Include not-due cards to fill session"
+    )
     sp_study.add_argument("--shuffle", action="store_true", help="Shuffle due pool before starting")
     sp_study.set_defaults(func=cmd_study)
 
@@ -334,7 +375,7 @@ def build_parser() -> argparse.ArgumentParser:
     sp_stats.set_defaults(func=cmd_stats)
 
     sp_due = sub.add_parser("due", help="List due cards")
-    sp_due.add_argument("--limit", type=int, help="Limit listing")
+    sp_due.add_argument("--limit", type=int, help="Limit listing (default 50)")
     sp_due.add_argument("--all", action="store_true", help="Include not-due")
     sp_due.set_defaults(func=cmd_due)
 
@@ -345,7 +386,7 @@ def build_parser() -> argparse.ArgumentParser:
     return p
 
 
-def main():
+def main() -> None:
     parser = build_parser()
     args = parser.parse_args()
     args.func(args)

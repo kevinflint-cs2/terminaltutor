@@ -3,24 +3,83 @@ name = "terminaltutor"
 version = "0.1.0"
 description = "TerminalTutor is a tiny, dependency-free Python CLI for mastering exams from your terminal. It implements a Leitner spaced-repetition system with confidence tagging, so you review missed items more often and space out what you know."
 authors = [
-    {name = "kevinflint-cs2",email = "kevin.flint@cybersecuritysquared.com"}
+  { name = "kevinflint-cs2", email = "kevin.flint@cybersecuritysquared.com" }
 ]
-license = {text = "MIT"}
+license = { text = "MIT" }
 readme = "README.md"
 requires-python = ">=3.11"
-dependencies = [
-]
+dependencies = []
 
+# Console scripts (module:function)
+[project.scripts]
+terminaltutor = "terminaltutor:main"
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
 build-backend = "poetry.core.masonry.api"
 
+# Dev dependencies
 [dependency-groups]
 dev = [
-    "pytest (>=8.4.2,<9.0.0)"
+  "pytest (>=8.4.2,<9.0.0)",
+  "poethepoet (>=0.37.0,<0.38.0)",
+  "ruff (>=0.13.0,<0.14.0)",
+  "mypy (>=1.18.1,<2.0.0)"
 ]
 
+# Pytest defaults
 [tool.pytest.ini_options]
 addopts = "-q"
 testpaths = ["tests"]
+
+# Poe the Poet
+[tool.poe]
+# optional: uncomment to make `poetry run poe` run everything
+# default_task = "all"
+
+[tool.poe.tasks]
+# Ruff
+fix   = "ruff check . --fix"
+fmt   = "ruff format ."
+lint  = "ruff check ."
+
+# Mypy
+typecheck = "mypy terminaltutor.py"
+
+# Pytest
+test  = "pytest -vv"
+
+# Aggregates
+checks = { sequence = ["fix", "fmt", "lint", "typecheck"] }
+all    = { sequence = ["checks", "test"] }
+
+# Convenience CLI runners
+study = "terminaltutor --state-dir=./quizsets/az900/ study --shuffle --limit 25"
+stats = "terminaltutor --state-dir=./quizsets/az900/ stats"
+due   = "terminaltutor --state-dir=./quizsets/az900/ due --limit 30"
+
+# Ruff configuration
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+src = ["."]
+exclude = [".venv", ".git", ".mypy_cache", ".ruff_cache", "dist", "build"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+ignore = ["E501"]  # allow long lines; remove if you want enforcement
+
+# mypy configuration
+[tool.mypy]
+python_version = "3.11"
+warn_unused_ignores = true
+warn_redundant_casts = true
+disallow_untyped_defs = true
+no_implicit_optional = true
+pretty = true
+show_error_codes = true
+strict_optional = true
+
+# Ensure the single-file module is packaged
+[tool.poetry]
+include = ["terminaltutor.py"]
