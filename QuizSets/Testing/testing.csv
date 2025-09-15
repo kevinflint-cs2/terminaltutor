@@ -1,0 +1,4 @@
+q,a
+What are the three pillars of the CIA triad?,Confidentiality, Integrity, Availability
+What Azure service stores secrets securely?,Azure Key Vault
+What is the default AWS VPC CIDR in many regions?,172.31.0.0/16

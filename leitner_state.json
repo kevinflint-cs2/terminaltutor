@@ -1,0 +1,63 @@
+{
+  "created": "2025-09-15T15:14:16.548747+00:00",
+  "cards": {
+    "csv:1": {
+      "id": "csv:1",
+      "q": "What are the three pillars of the CIA triad?",
+      "a": "Confidentiality"
+    },
+    "csv:2": {
+      "id": "csv:2",
+      "q": "What Azure service stores secrets securely?",
+      "a": "Azure Key Vault"
+    },
+    "csv:3": {
+      "id": "csv:3",
+      "q": "What is the default AWS VPC CIDR in many regions?",
+      "a": "172.31.0.0/16"
+    }
+  },
+  "progress": {
+    "csv:1": {
+      "box": 2,
+      "next_due": "2025-09-16T15:15:17.075848+00:00",
+      "last_conf": "h",
+      "reps": 1
+    },
+    "csv:2": {
+      "box": 2,
+      "next_due": "2025-09-16T15:15:31.762884+00:00",
+      "last_conf": "h",
+      "reps": 1
+    },
+    "csv:3": {
+      "box": 1,
+      "next_due": "2025-09-15T15:15:49.980866+00:00",
+      "last_conf": "l",
+      "reps": 1
+    }
+  },
+  "history": [
+    {
+      "ts": "2025-09-15T15:15:17.075874+00:00",
+      "cid": "csv:1",
+      "old_box": 1,
+      "new_box": 2,
+      "conf": "h"
+    },
+    {
+      "ts": "2025-09-15T15:15:31.762908+00:00",
+      "cid": "csv:2",
+      "old_box": 1,
+      "new_box": 2,
+      "conf": "h"
+    },
+    {
+      "ts": "2025-09-15T15:15:49.980893+00:00",
+      "cid": "csv:3",
+      "old_box": 1,
+      "new_box": 1,
+      "conf": "l"
+    }
+  ]
+}
